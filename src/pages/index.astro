@@ -87,7 +87,7 @@
 						<p>A game about love, math, and graphing</p>
 						<div class="project-arrow">→</div>
 					</a>
-					<a href="" class="project-card">
+					<a href="https://editor.p5js.org/aileen1/sketches/htv-hqzhj" class="project-card">
 						<h3>Lindenmayer systems workshop</h3>
 						<p>I recently hosted a workshop on Lindenmayer systems, a project I had been working on for months. I was excited to finally share this knowledge with others. Teaching this topic was a natural choice for me, as I'm truly passionate about spreading awareness of computer graphics and disciplines that highlight the importance of algorithmic thinking, creativity, and design.</p>
 						<div class="project-arrow">→</div>
@@ -836,7 +836,6 @@ footer {
 </style>
 
 <script>
-// Your orchid images - ONLY defined once, inside the script
 const orchidImages = [
   '/orchids/coral_orchid.png',
   '/orchids/hot_pink_orchid.png',
@@ -858,15 +857,12 @@ function createOrchid(x, y) {
     const orchid = document.createElement('div');
     orchid.className = 'orchid-sticker fade-in';
     
-    // Use your actual orchid PNG images
     const randomOrchid = orchidImages[Math.floor(Math.random() * orchidImages.length)];
     orchid.innerHTML = `<img src="${randomOrchid}" alt="orchid" class="orchid-img">`;
-    
-    // Random offset from click position
+
     const offsetX = (Math.random() - 0.5) * 50;
     const offsetY = (Math.random() - 0.5) * 50;
     
-    // Use the exact click coordinates
     orchid.style.position = 'fixed';
     orchid.style.left = (x + offsetX) + 'px';
     orchid.style.top = (y + offsetY) + 'px';
@@ -902,14 +898,12 @@ document.addEventListener('click', (e) => {
                          clickedElement.tagName === 'H2' ||
                          clickedElement.tagName === 'H3';
     
-    // Spawn orchids everywhere EXCEPT on text/buttons/links
     if (!isContentArea) {
         console.log("Creating orchid at:", e.clientX, e.clientY);
         createOrchid(e.clientX, e.clientY);
     }
 });
 
-// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -920,7 +914,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Enhanced parallax effect for floating elements + clear orchids on scroll
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const parallax = document.querySelectorAll('.floating-arch');
@@ -931,7 +924,6 @@ window.addEventListener('scroll', () => {
         element.style.transform = `translateY(${scrolled * speed}px) rotate(${rotation}deg)`;
     });
     
-    // Clear all orchids when user scrolls (so they don't block the view)
     const orchids = document.querySelectorAll('.orchid-sticker');
     orchids.forEach(orchid => {
         if (orchid.parentNode) {
